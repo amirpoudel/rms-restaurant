@@ -3,6 +3,10 @@ dotenv.config({path:'./.env'});
 
 import app from './app';
 
+// kafka init
+import { KafkaAdmin } from './config/kafka/kafka.config';
+KafkaAdmin.kafkaInit();
+
 const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, () => {

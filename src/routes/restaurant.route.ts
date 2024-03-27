@@ -1,17 +1,20 @@
-import e, { Router } from "express";
+import { Router } from "express";
 import { RestaurantRepository } from "../repositories/restaurant.repository";
 import { RestaurantInteractor } from "../interactors/restaurant.interactor";
 import { RestaurantController } from "../controllers/restaurant.controller";
+import { KafkaProducer } from "../integrations/kafka/producer.kafka";
 
 
 const router = Router();
 
 const repository = new RestaurantRepository();
-const interactor = new RestaurantInteractor(repository);
+const kafkaProducer = new KafkaProducer();
+const interactor = new RestaurantInteractor(repository,kafkaProducer);
 
 const restaurantController = new RestaurantController(interactor);
 
 router.route("/").get(restaurantController.createRestaurant);
+router.route("/register").post(restaurantController.createRestaurant);
 
 
 export default router;

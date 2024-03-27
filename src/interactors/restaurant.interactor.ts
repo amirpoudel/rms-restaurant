@@ -1,16 +1,22 @@
+import { IKafkaProducer } from "../interfaces/IKafka";
 import { IRestaurantInteractor, IRestaurantRepository } from "../interfaces/IRestaurant";
 
 export class RestaurantInteractor implements IRestaurantInteractor{
     
     private repository:IRestaurantRepository;
-    constructor(repository:IRestaurantRepository){
+    private kafkaProducer:IKafkaProducer;
+    constructor(repository:IRestaurantRepository,kafkaProducer:IKafkaProducer){
         this.repository = repository;
+        this.kafkaProducer = kafkaProducer;
     }
 
     async createRestaurant(data: any): Promise<any> {
         try {
-            const restaurant  = await this.repository.createRestaurant(data);
-            return restaurant;    
+            //const restaurant  = await this.repository.createRestaurant(data);
+            //produce message to kafka
+            await this.kafkaProducer.produce();
+            console.log('Produced message to kafka');
+            //return restaurant;    
         } catch (error) {
             throw error;
         }
