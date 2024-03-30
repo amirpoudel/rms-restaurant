@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 dotenv.config({path:'./.env'});
 
-import app from './app';
+import app from './presentation/express/app';
 
 // kafka init
 import { KafkaAdmin } from './config/kafka/kafka.config';

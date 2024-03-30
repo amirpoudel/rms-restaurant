@@ -1,6 +1,6 @@
 
-import { IRestaurantInteractor } from "../interfaces/IRestaurant";
-import { AsyncHandler } from "../utils/error/asyncHandler";
+import { IRestaurantInteractor } from "../../../interfaces/IRestaurant";
+import { AsyncHandler } from "../error/asyncHandler";
 import { Request,Response } from "express";
 
 export class RestaurantController {

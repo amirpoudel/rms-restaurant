@@ -1,4 +1,4 @@
-import { IRestaurantRepository } from "../interfaces/IRestaurant";
+import { IRestaurantRepository } from "../../../interfaces/IRestaurant";
 import { RestaurantModel } from "../models/restaurant.model";
 
 export class RestaurantRepository implements IRestaurantRepository{

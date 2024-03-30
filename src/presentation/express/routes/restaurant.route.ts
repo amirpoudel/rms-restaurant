@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { RestaurantRepository } from "../repositories/restaurant.repository";
-import { RestaurantInteractor } from "../interactors/restaurant.interactor";
+import { RestaurantRepository } from "../../../infrastructure/database/repositories/restaurant.repository";
+import { RestaurantInteractor } from "../../../interactors/restaurant.interactor";
 import { RestaurantController } from "../controllers/restaurant.controller";
-import { KafkaProducer } from "../integrations/kafka/producer.kafka";
+import { KafkaProducer } from "../../../infrastructure/kafka/producer.kafka";
 
 
 const router = Router();
