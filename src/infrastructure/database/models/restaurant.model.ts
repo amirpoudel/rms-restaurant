@@ -1,6 +1,11 @@
 import mongoose from 'mongoose';
+import { Restaurant } from '../../../domain/entities/restaurant.entity';
 
-const restaurantSchema = new mongoose.Schema({
+const restaurantSchema = new mongoose.Schema<Restaurant>({
+    id:{
+        type: String,
+        required:true
+    },
     name: {
         type: String,
         trim: true,
@@ -113,4 +118,4 @@ const restaurantSchema = new mongoose.Schema({
 });
 
 
-export const RestaurantModel = mongoose.model('Restaurant',restaurantSchema);
+export const RestaurantModel = mongoose.model<Restaurant>('Restaurant',restaurantSchema);
