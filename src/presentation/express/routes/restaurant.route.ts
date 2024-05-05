@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { RestaurantRepository } from "../../../infrastructure/database/repositories/restaurant.repository";
+import { RestaurantRepository } from "../../../infrastructure/database/repositories/profile.repository";
 import { RestaurantInteractor } from "../../../interactors/restaurant.interactor";
 import { RestaurantController } from "../controllers/restaurant.controller";
 import { KafkaProducer } from "../../../infrastructure/kafka/producer.kafka";
@@ -9,6 +9,7 @@ import { RestaurantValidation } from "../../../domain/application/validation/res
 const router = Router();
 
 const repository = new RestaurantRepository();
+
 const kafkaProducer = new KafkaProducer();
 const validation = new RestaurantValidation();
 const interactor = new RestaurantInteractor(repository,kafkaProducer,validation);

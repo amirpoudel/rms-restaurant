@@ -1,10 +1,10 @@
 import { Restaurant } from "../../../domain/entities/restaurant.entity";
 import { IRestaurantRepository } from "../../../interfaces/IRestaurant";
-import { RestaurantModel } from "../models/restaurant.model";
+import { ProfileModel } from "../models/profile.model";
 
 export class RestaurantRepository implements IRestaurantRepository{
 
-    constructor(private readonly model = RestaurantModel){};
+    constructor(private readonly model = ProfileModel){};
 
     async createRestaurant(data: Partial<Restaurant>): Promise<any> {
         try {
