@@ -1,5 +1,6 @@
-import mongoose from 'mongoose';
 
+import mongoose from 'mongoose';
+import { Profile } from '../../../domain/entities/profile.entity';
 
 
 const addressSchema = new mongoose.Schema({
@@ -79,7 +80,7 @@ const openingHoursSchema = new mongoose.Schema({
 
 })
 
-const profileSchema = new mongoose.Schema({
+const profileSchema = new mongoose.Schema<Profile>({
     name: {
         type: String,
         required: true
@@ -96,6 +97,15 @@ const profileSchema = new mongoose.Schema({
         max:5,
     },
     openingHours:[openingHoursSchema],
+
+},{
+    timestamps:true,
+    toObject:{
+        transform: function(doc,ret){
+            delete ret.__v;
+            return ret;
+        }
+    }
 });
 
-export const ProfileModel = mongoose.model('Profile',profileSchema);
+export const ProfileModel = mongoose.model<Profile>('Profile',profileSchema);
