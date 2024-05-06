@@ -1,3 +1,5 @@
+import { Profile } from "../domain/entities/profile.entity"
+
 export interface IProfileInteractor{
     createProfile(data:any):Promise<any>
     
@@ -7,4 +9,6 @@ export interface IProfileInteractor{
 
 export interface IProfileRepository {
 
+    createProfile(data:Profile):Promise<Profile>
+    
 }

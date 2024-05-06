@@ -33,9 +33,12 @@ app.use(express.static("public"))
 app.use(cookieParser())
 
 
-//import routes
-import restaurantRoutes from "./routes/restaurant.route";
-app.use("/api/v1/restaurant", restaurantRoutes);
+// imports routes
+import profileRoutes from './routes/profile.route'
+
+app.use("/profile",profileRoutes)
+
+
 
 
 export default app;

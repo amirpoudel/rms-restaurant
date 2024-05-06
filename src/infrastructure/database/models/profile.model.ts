@@ -1,5 +1,5 @@
 
-import mongoose from 'mongoose';
+import mongoose, { Document } from 'mongoose';
 import { Profile } from '../../../domain/entities/profile.entity';
 
 
@@ -79,6 +79,8 @@ const openingHoursSchema = new mongoose.Schema({
     }
 
 })
+
+
 
 const profileSchema = new mongoose.Schema<Profile>({
     name: {
