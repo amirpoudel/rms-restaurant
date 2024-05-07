@@ -1,6 +1,9 @@
 
-import mongoose, { Document } from 'mongoose';
+import mongoose, { Schema,Document } from 'mongoose';
 import { Profile } from '../../../domain/entities/profile.entity';
+
+export interface ProfileDocument extends Profile, Document {}
+
 
 
 const addressSchema = new mongoose.Schema({
@@ -82,7 +85,7 @@ const openingHoursSchema = new mongoose.Schema({
 
 
 
-const profileSchema = new mongoose.Schema<Profile>({
+const profileSchema: Schema<ProfileDocument>  = new mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -110,4 +113,4 @@ const profileSchema = new mongoose.Schema<Profile>({
     }
 });
 
-export const ProfileModel = mongoose.model<Profile>('Profile',profileSchema);
+export const ProfileModel = mongoose.model<ProfileDocument>('Profile',profileSchema);

@@ -12,6 +12,7 @@ export class ProfileController {
         }
     
         createProfile = AsyncHandler.trycatch(async(req:any,res:any)=>{
+            
             const profile = await this.interactor.createProfile(req.body);
             return res.status(200).json({message:'Profile created successfully',data:profile});
     
