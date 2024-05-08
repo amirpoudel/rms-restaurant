@@ -5,6 +5,7 @@ import { IProfileInteractor, IProfileRepository } from "../interfaces/IProfile";
 export class ProfileInteractor implements IProfileInteractor{
 
     private repository:IProfileRepository;
+    
     constructor(repository:IProfileRepository){
         this.repository = repository;
     }

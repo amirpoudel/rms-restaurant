@@ -6,10 +6,19 @@ export interface IProfileInteractor{
     
 
 }
-
-
 export interface IProfileRepository {
 
     createProfile(data:Profile):Promise<Profile>
     
 }
+
+
+export interface IProfileValidation{
+    validate(data:Profile):boolean
+}
+
+
+export interface IProfileApplication{
+    validate(data:Profile):boolean
+}
+
