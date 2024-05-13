@@ -36,7 +36,7 @@ app.use(cookieParser())
 // imports routes
 import profileRoutes from './routes/profile.route'
 
-app.use("/profile",profileRoutes)
+app.use("/api/v1/profile",profileRoutes)
 
 
 

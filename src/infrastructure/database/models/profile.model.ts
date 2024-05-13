@@ -1,6 +1,7 @@
 
 import mongoose, { Schema,Document } from 'mongoose';
 import { Profile } from '../../../domain/entities/profile.entity';
+import { ProfileSchema } from '../../../domain/schemas/profile.schema';
 
 export interface ProfileDocument extends Profile, Document {}
 
@@ -85,7 +86,7 @@ const openingHoursSchema = new mongoose.Schema({
 
 
 
-const profileSchema: Schema<ProfileDocument>  = new mongoose.Schema({
+const profileSchema = new mongoose.Schema<ProfileDocument>({
     name: {
         type: String,
         required: true
@@ -105,12 +106,7 @@ const profileSchema: Schema<ProfileDocument>  = new mongoose.Schema({
 
 },{
     timestamps:true,
-    toObject:{
-        transform: function(doc,ret){
-            delete ret.__v;
-            return ret;
-        }
-    }
+    
 });
 
 export const ProfileModel = mongoose.model<ProfileDocument>('Profile',profileSchema);

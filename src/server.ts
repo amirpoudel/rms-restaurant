@@ -12,7 +12,7 @@ const db = new MongoDBConfig();
 db.connect()
 
 
-KafkaAdmin.kafkaInit();
+//KafkaAdmin.kafkaInit();
 
 const PORT = process.env.PORT || 8000;
 

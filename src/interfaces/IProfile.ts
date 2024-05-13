@@ -13,12 +13,8 @@ export interface IProfileRepository {
 }
 
 
-export interface IProfileValidation{
-    validate(data:Profile):boolean
-}
-
 
 export interface IProfileApplication{
-    validate(data:Profile):boolean
+    validateSchema(data:Profile):boolean
 }
 
