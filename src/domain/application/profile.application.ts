@@ -15,9 +15,10 @@ export class ProfileApplication implements IProfileApplication{
             this.profileSchemaValidation.parse(data);
             return true;
         } catch (error) {
-            console.log(error)
             throw  AppError.badRequest("Invalid Profile Data",error,[],true);
         }
     }
+
+    
 
 }

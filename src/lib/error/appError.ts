@@ -13,7 +13,6 @@ export class AppError extends Error{
       this.errors = errors;
       this.statusCode = statusCode;
       this.status = status;
-  
       this.isOperational = true;
     }
 
