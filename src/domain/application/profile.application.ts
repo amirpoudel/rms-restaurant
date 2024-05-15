@@ -10,10 +10,9 @@ export class ProfileApplication implements IProfileApplication{
         this.profileSchemaValidation = ProfileSchema;
     
    }
-    validateSchema(data: Profile): boolean {
+    validateSchema(data: Profile): void {
         try {
             this.profileSchemaValidation.parse(data);
-            return true;
         } catch (error) {
             throw  AppError.badRequest("Invalid Profile Data",error,[],true);
         }

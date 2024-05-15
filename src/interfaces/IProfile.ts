@@ -15,6 +15,6 @@ export interface IProfileRepository {
 
 
 export interface IProfileApplication{
-    validateSchema(data:Profile):boolean
+    validateSchema(data:Profile):void
 }
 
