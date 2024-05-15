@@ -13,5 +13,5 @@ export interface IRestaurantRepository {
 
 
 export interface IRestaurantValidation{
-    validate(data:any):void;
+    validate(data:any):void; //validate schema using zod . if error happens throw AppError
 }

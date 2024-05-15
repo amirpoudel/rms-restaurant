@@ -15,12 +15,12 @@ export class ProfileInteractor implements IProfileInteractor{
 
     async createProfile(data: Profile): Promise<Profile> {
         //validate schema
-        const isValid = this.application.validateSchema(data)
-        console.log(isValid)
-        if(!isValid){
-           throw AppError.badRequest("Invalid Profile Data",null,[],true)
+        try {
+            this.application.validateSchema(data)
+            return await this.repository.createProfile(data);
+        } catch (error) {
+            throw error;
         }
-        return await this.repository.createProfile(data);
     }
 
 

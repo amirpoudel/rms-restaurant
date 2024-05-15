@@ -1,3 +1,4 @@
+
 import { IProfileApplication } from "../../interfaces/IProfile";
 import { AppError } from "../../lib/error/appError";
 import { Profile } from "../entities/profile.entity";
@@ -14,7 +15,7 @@ export class ProfileApplication implements IProfileApplication{
         try {
             this.profileSchemaValidation.parse(data);
         } catch (error) {
-            throw  AppError.badRequest("Invalid Profile Data",error,[],true);
+            throw  AppError.zodError("Invalid Profile Data",error,[],true);
         }
     }
 

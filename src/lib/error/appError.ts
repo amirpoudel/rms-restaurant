@@ -1,3 +1,5 @@
+import { ZodError } from "zod";
+
 export class AppError extends Error{ 
     public readonly message: string;
     public readonly statusCode: number;
@@ -6,7 +8,7 @@ export class AppError extends Error{
     public readonly errors: any[] | null;
     public readonly isOperational: boolean;
   
-    constructor(statusCode: number,error:any,errors:any[],message: string,status: string,isOperational:boolean) {
+    constructor(statusCode: number,message: string,error:any,errors:any[],status: string,isOperational:boolean) {
         super();
       this.message = message;
       this.error = error;
@@ -15,24 +17,27 @@ export class AppError extends Error{
       this.status = status;
       this.isOperational = true;
     }
-
+    public static zodError(message:string,error:any,errors:any[]=[],isOperational:boolean=true){
+        //handle zod error case
+        return new AppError(400,message,"Validation Error",error.issues,'fail',isOperational);
+    }
     public static badRequest(message:string,error:any,errors:any[] = [],isOperational:boolean) {
-        return new AppError(400,error,errors,message,'fail',isOperational);
+        return new AppError(400,message,error,errors,'fail',isOperational);
     }
     public static internalServerError(message:string){
-        return new AppError(500,"",[],message,'error',true);
+        return new AppError(500,message,'error',[],"fail",true);
     }
 
     public static notFound(message:string){
-        return new AppError(404,"",[],message,'fail',true);
+        return new AppError(404,message,"",[],'fail',true);
     }
 
     public static invalidCredentials(message:string){
-        return new AppError(401,"",[],message,'fail',true);
+        return new AppError(401,message,"",[],'fail',true);
     }
 
     public static unauthorized(message:string){
-        return new AppError(403,"",[],message,'fail',true);
+        return new AppError(403,message,"",[],'fail',true);
     }
 
 }
